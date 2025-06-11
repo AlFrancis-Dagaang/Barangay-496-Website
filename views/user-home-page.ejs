@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay 496 | Home</title>
+        <link rel="stylesheet" href="/CSS/user-home-page-style.css">
+        <link rel="stylesheet" href="/CSS/user-edit-profile.css">
+        <link rel="stylesheet" href="/CSS/user-change-password.css">
+        <link rel="stylesheet" href="/CSS/user-service-button-style.css">
+        <link rel="stylesheet" href="/CSS/appointment-style.css">
+        <link rel="stylesheet" href="/CSS/write-complaint-section.css">
+        <link rel="icon" href="/images/loFinal.png">
+
+    </head>
+    <body>
+        <div class="header-wrapper">
+            <a href="/home"><img src="/images/loFinal.png" class="brgy-logo" alt="Barangay Logo" style="cursor: pointer;"></a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/status-hub">Status Hub</a></li>
+            </ul>
+            <img src="<%=userData.profileImage%>" class="user-logo" alt="profile pic">
+
+            <div class="profile-wrap-main"  id="sub-menu">
+                <div class="profile-wrapper">
+                    <div class="profile-name">
+                        <img src="<%=userData.profileImage%>" alt="" class="user-drop-logo">
+                        <h2 class="user-userName"><%=userData.userName%></h2>
+                    </div>
+                    <div class="profile-drop-down">
+                        <div class="<%= userData.status !== 'verified' ? 'user-status-notVerified' : 'user-status' %>">
+                            <% if (userData.status === 'verified') { %>
+                                <ion-icon name="checkmark-circle-outline"></ion-icon> Verified
+                            <% } else { %>
+                                <ion-icon name="alert-circle-outline"></ion-icon> Not verified
+                            <% } %>
+                        </div>
+                        
+                       <a href="#" id="edit-profile-link" class="drop-down-link">
+                        <img src="/images/user-drop-down.png" alt="user" class="drop-down-icon">
+                        <p>Edit Profile</p>
+                        <span>></span>
+                       </a>
+                       <a href="#" id="edit-password-link" class="drop-down-link">
+                        <img src="/images/padlock.png" alt="user" class="drop-down-icon">
+                        <p>Change password</p>
+                        <span>></span>
+                       </a>
+                       <a href="#" id="user-logout" class="drop-down-link">
+                        <img src="/images/logout-drop-down.png" alt="user" class="drop-down-icon">
+                        <p>Log out</p>
+                        <span>></span>
+                       </a>
+                    </div>     
+                </div>
+            </div>
+        </div>  
+
+        <div class="content">
+            <div class="our-services">
+              <h1>Service Available</h1>
+              <p>Covering all residents of Barangay 496</p>
+            </div>
+            <div class="service-choices">
+              <div class="title"><h1>Select your required service</h1>
+              </div>
+              <div class="choices-div choices">
+                  <div class="choice" id="request-document"><img src="/images/licensing.png"><h2>Request Document</h2></div>
+                  <div class="choice" id="set-appointment"><img src="/images/schedule.png"><h2>Set Appointment</h2></div>
+                  <div class="choice" id="write-complaint"><img src="/images/ccomlaints.png"><h2>Write Complaint</h2></div>
+              </div>
+            </div>
+          </div>
+
+        <div class="guide-content-verify">
+            <p>To uphold the highest standards of security and safeguard the integrity of our services, 
+                it is imperative that all users undergo a one-time verification process prior to gaining access. 
+                This essential measure is implemented to fortify the protection of your personal information, 
+                ensuring its confidentiality and shielding against any potential unauthorized access or misuse.
+                <br>
+                <br>
+                <% if (userData.status === "notVerified" || userData.status === "pending") { %>
+                    <button class="verify-button" id="sample-backend">Verify your account</button>
+                <% } else { %>
+                    <button class="verified-button" disabled>You are now a verified resident</button>
+                <% } %>
+            </p>
+            <img src="/images/verified.webp" alt="verified">
+        </div>
+        <div class="guide-content-info">
+            <h2>Our Features</h2>
+            <div class="wrapper">
+                <div id="columns">
+                    <img src="/images/document-info.png" id="doc-info">
+                    <div class="h3"><h3>Requesting</h3>
+                        <h3>Documents</h3></div>
+                    <p>Easily obtain essential documents like Barangay Clearance, Indigency Certificates, 
+                        Solo Parent Certificates, and more through our efficient barangay service.
+                        Simplify your administrative tasks with us today.
+                    </p>
+                    <div class="learn-more how-to-request">
+                        <h4>How to request</h4> 
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                </div>
+                <div id="columns">
+                    <img src="/images/appoint-info.png" id="doc-info">
+                    <div class="h3"><h3>Setting</h3>
+                        <h3>Appointments</h3></div>
+                    <p>
+                        Streamline your barangay appointments effortlessly with our service. 
+                        Book appointments for various administrative tasks with ease, 
+                        ensuring your needs are met efficiently and conveniently.
+                    </p>
+                    <div class="learn-more how-to-appoint">
+                        <h4>How to appoint</h4> 
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                </div>
+                <div id="columns">
+                    <img src="/images/complaint-info.png" id="doc-info">
+                    <div class="h3"><h3>Writing</h3>
+                    <h3>Complaints</h3></div>
+                    <p>
+                        Drafting complaints has never been easier with our assistance. 
+                        We'll help you articulate your grievances effectively, 
+                        ensuring your concerns are heard and addressed promptly.
+                    </p>
+                    <div class="learn-more how-to-complaint">
+                        <h4>How to complaint</h4> 
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-us">
+            <h2>Contact us</h2>
+            <div class="content">
+                <div class="form-box log-in">
+                    <h3>Send us a message</h3>
+                    <form action="#" class="contact-form"> <!-- Unique class for the form -->
+                      <div class="input-box">
+                        <input type="text" placeholder="Name" class="contact-name" />
+                        <div class="cntc-message"><ion-icon name="alert-circle-outline"></ion-icon><p>Required</p></div >
+                      </div>
+                      <div class="input-box">
+                        <input type="email" placeholder="Email" class="contact-email" />
+                        <div class="cntc-message"><ion-icon name="alert-circle-outline"></ion-icon><p>Required</p></div >
+                      </div>
+                      <div class="text-area">
+                        <textarea placeholder="Message" class="contact-message"></textarea>
+                        <div class="cntc-message"><ion-icon name="alert-circle-outline"></ion-icon><p>Required</p></div >
+                      </div>
+                      <button type="submit" class="contact-button">Submit</button> <!-- Unique class for the submit button -->
+                    </form>
+                  </div>
+                <div class="contact-list">
+                    <h3>Visit Barangay Hall</h3>
+                    <p>
+                        Feel free to drop by our barangay hall at your convenience.
+                         We're here to assist you with any inquiries, concerns, or document needs you may have.
+                    </p>
+                    <div class="contact-adress list">
+                        <img src="/images/gps.png" id="icons">
+                        <p><b class="bold">Address</b>
+                            <br>1425 Ibarra Street, Cor. Maria Clara Simoun, Sampaloc, Manila
+                        </p>
+                    </div>
+                    <div class="contact-phone list">
+                        <img src="/images/phone-call.png" id="icons">
+                        <p><b class="bold">Phone</b>
+                            <br>+63 9427422964 
+                        </p>
+                    </div>
+                    <div class="contact-email list">
+                        <img src="/images/email.png" id="icons">
+                        <p><b class="bold">Email</b>
+                            <br>barangay.496.district.4@gmail.com 
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h2>Barangay 496.com</h2>
+            <p class="text">You're welcome to visit Barangay 496. <br>
+             Our doors are open to assist you with any <br>community-related matters or services you may require.</p>
+            <p class="copy-right"><b>Copy right © Barangay 2024</b> All right reserved</p>
+        </div>
+        <script src="/JS/user-click-guide.js"></script>
+        <script src="/JS/userSendMessages.js"></script>
+        <script src="/JS/user-choose-service.js"></script>
+        <script src="/JS/user-log-out.js"></script>
+        <script src="/JS/user-change-password.js"></script>
+        <script src="/JS/user-edit-profile.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+        
+
+        let profile = document.querySelector('.user-logo');
+        let dropMenu = document.getElementById('sub-menu');
+
+        profile.addEventListener('click', ()=>{
+                dropMenu.classList.toggle('open-menu');
+        });
+
+
+
+        </script>
+    </body>
+</html>

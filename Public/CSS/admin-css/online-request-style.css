@@ -1,0 +1,272 @@
+.online-request-section{
+    margin: 70px auto;
+    width: 1200px;
+    background-color: white;
+}
+
+.title-conts{
+    height: 150px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 217, 92);
+}
+
+.title-conts h1{
+    font-size: 40px;
+}
+
+.nosBrgy-certi, .nosBusiness-certi, .nosBrgy-indigency, .nosBrgy-clearance{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.online-request-section hr {
+    margin-top: 20px;
+    height: 10px;
+    background-color: rgb(41, 41, 41);
+    border: none;
+}
+
+.rows-verify{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+}
+
+.rows-verify > *{
+    flex: 1; /* Each child element takes up equal space */
+    text-align: center; /* Optional: Center-align text within each element */
+}
+.each-user-conts{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    padding: 40px 0;
+    margin-top: 10px;
+}
+
+.each-user-conts > *{
+    flex: 1; /* Each child element takes up equal space */
+    text-align: center; /* Optional: Center-align text within each element */
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+.actions .middle{
+    margin: 0 30px;
+}
+
+.actions .middle ion-icon{
+    color: rgb(6, 123, 8);
+}
+
+.actions .search ion-icon{
+    color: rgb(52, 150, 255);
+}
+
+.verify-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+.online-status-conts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    border-radius: 12px;
+    background-color: #f4ce74;
+    font-size: 14px;
+}
+
+.status-conts ion-icon{
+    margin-left: 5px;
+}
+
+.actions ion-icon{
+    cursor: pointer;
+}
+.rejected ion-icon{
+    color: red;
+}
+
+.request-Selectstatus{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.request-Selectstatus div{
+    margin-left: 10px;
+}
+
+
+.request-Selectstatus #selectInput{
+    width: 150px;
+    padding: 3px 0;
+    font-size: 16px;
+
+}
+
+.no-data-type{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: rgb(187, 187, 187);
+    padding: 50px 0;
+}
+
+
+.BarangayCertificate-swal-container{
+    width: 750px;
+    height: 700px;
+    background: rgb(217, 214, 214);
+    overflow-y: auto !important; /* Allow vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+}
+
+.BarangayCertificate-conts .first-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.BarangayCertificate-conts{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.BarangayCertificate-conts > *{
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px
+}
+
+.BarangayCertificate-conts .second-section .full-name{
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+}
+
+.BarangayCertificate-conts .second-section p{
+    text-align: start;
+}
+
+.BarangayCertificate-conts .second-section .full-name> *{
+    flex: 1;
+}
+
+.BarangayCertificate-third-section{
+    display: flex;
+}
+
+.BarangayCertificate-third-section div{
+    width: 100%;
+}
+
+.BarangayCertificate-third-section .phoneNumber{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.BarangayCertificate-conts input{
+    height: 35px;
+    width: 190px;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.BarangayCertificate-third-section .BarangayCertificateEmail input{
+    width: 310px;
+}
+
+.BarangayCertificate-third-section .quantities input{
+    text-align: start;
+    height: 30px;
+    width: 100px;
+}
+
+.BarangayCertificate-third-section .BarangayCertificateEmail{
+   text-align: start;
+    margin-left: 30px;
+}
+
+.BarangayCertificate-fourth-section{
+    text-align: start;
+}
+
+.BarangayCertificate-fourth-section select{
+    margin-top: 10px;
+    height: 30px;
+    font-size: 15px;
+    outline: none;
+}
+
+.btn{
+    margin-top: 60px;
+}
+
+.btn #approved-req, .btn #reject-req{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: .5s;
+    font-size: 16px;
+}
+
+.btn #approved-req{
+    background-color: #f4ce74;
+    color: rgb(21, 20, 20);
+    margin-right: 20px;
+}
+
+.btn #reject-req{
+    background-color: rgb(41, 40, 40);
+    color: white;
+    margin-left: 20px;
+}
+
+.btn button:hover{
+    opacity: .8;
+}
+
+.request-Selectstatus #selectInput{
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    width: 100%;
+}
+
+.request-Selectstatus .underline{
+    border-bottom: solid 2px;
+    width: 200px;
+}
+
+

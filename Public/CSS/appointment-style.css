@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+ 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--poppins);
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+
+ .button{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#myButton{
+    width: 100px;
+    height: 50px;
+}
+
+.appoinment-style-swal{
+    height:500px;
+    width: 650px;
+    background-color: #ffffff;
+}
+
+.title h2 {
+    font-size:40px;
+    color:#000000;
+    text-align:center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    }
+    
+.title h2{
+    color: #000000;
+    position: relative;
+}
+.title h2::after{
+    content: '';
+    width: 70px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgb(219, 168, 0); 
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.p-tag{
+    border: 1px solid rgb(145, 255, 0);
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 50px;
+    color: rgb(70, 177, 4);
+}
+
+.code-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    border-bottom: solid black;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.code-inputs input{
+    text-decoration: none;
+    border: none;
+    outline: none;
+    width: 600px;
+    padding: 5px 5px;
+    font-size: 20px;
+}
+
+.code-inputs input::placeholder{
+    color: #bbbbbb;
+}
+
+
+#submit-appointment-code{
+    border: none;
+    background-color: #f4ce74;
+    font-size: 20px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    margin-top: 60px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+#submit-appointment-code:hover{
+    opacity: .8;
+}
+
+.warning{
+    position: absolute;
+    bottom: 120px;
+    left: 130px;
+    display: flex;
+    align-items: center;
+}
+
+.warning p{
+    font-size: 14px;
+    margin-left: 2px;
+    color: var(--red);
+}
+
+.warning ion-icon{
+    color: var(--red);
+}
+
+.Document-request-swal{
+    height:700px;
+    width: 650px;
+    background-color: #e7e7e7;
+}
+
+.document-request-conts{
+    height:100%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.document-request-conts .content > *{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.document-request-conts .content > * >*{
+    flex: 1;
+    text-align: start;
+}
+
+.document-request-conts .heading{
+    font-size: 35px;
+    display: flex;
+    padding: 20px 10px;
+    background-color: #f4ce74;
+    color: #000000;
+    border-bottom: solid 5px #000000;
+}
+
+.document-request-conts .content{
+    padding: 0px 50px;
+    margin-top: 30px;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+
+#set-appointment-now{
+    border: none;
+    background-color: #f4ce74;
+    font-size: 20px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    margin-top: 30px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+#set-appointment-now:hover{
+    opacity: .8;
+}
+
+
+.date-input input[type="date"]{
+    background-color: #f4ce74;
+    padding: 15px;
+    font-family: "Roboto Mono",monospace;
+    color: #292929;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-top: 50px;
+    font-weight: 500;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.set-appoinment-now-swal{
+    height: 500px;
+    background-color: #e7e7e7;
+}
+
+.set-date-heading{
+    border: solid;
+    background-color: #282828;
+    color: white;
+}
+
+.setdate-conts{
+    background-color: white;
+    height: 100%;
+}
+
+.set-date-info{
+    display: flex;
+    text-align: start;
+    width: 400px;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+
+.set-date-info ion-icon{
+    color: rgb(88, 196, 30);
+}
+
+#set-date-button{
+    border: 2px solid rgb(32, 32, 32);
+    background-color: transparent;
+    font-size: 16px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    margin-top: 60px;
+    transition: .5s;
+    cursor: pointer;
+    outline: none;
+}
+
+#set-date-button:hover{
+    background-color: rgb(32, 32, 32);
+    color: white;
+}
+
+.setdate-conts .warning {
+    position: absolute;
+    bottom: 140px;
+    left: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.setdate-conts .warning p{
+    font-size: 14px;
+    margin-left: 2px;
+    color: var(--red);
+}
+
+.setdate-conts .warning ion-icon{
+    color: var(--red);
+}
+

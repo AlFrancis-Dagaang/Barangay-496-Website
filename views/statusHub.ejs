@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay 496 | Status Hub</title>
+        <link rel="icon" href="/images/loFinal.png">
+        <link rel="stylesheet" href="/CSS/user-home-page-style.css">
+        <link rel="stylesheet" href="/CSS/status-hub.css">
+        <link rel="stylesheet" href="/CSS/user-edit-profile.css">
+        <link rel="stylesheet" href="/CSS/user-change-password.css">
+        <link rel="stylesheet" href="/CSS/user-service-button-style.css">
+        <link rel="stylesheet" href="/CSS/appointment-style.css">
+
+    </head>
+    <body>
+        <div class="header-wrapper">
+          <a href="/home"><img src="/images/loFinal.png" class="brgy-logo" alt="Barangay Logo" style="cursor: pointer;"></a>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/status-hub">Status Hub</a></li>
+            </ul>
+            <img src="<%= userMainData && userMainData.profileImage %>" class="user-logo" alt="profile pic">
+
+
+            <div class="profile-wrap-main"  id="sub-menu">
+                <div class="profile-wrapper">
+                    <div class="profile-name">
+                        <img src="<%= userMainData && userMainData.profileImage %>" alt="" class="user-drop-logo">
+                        <h2 class="user-userName"><%= userMainData && userMainData.userName || 'Unknown' %></h2>
+                    </div>
+                    <div class="profile-drop-down">
+                      <div class="<%= userMainData.status !== 'verified' ? 'user-status-notVerified' : 'user-status' %>">
+                        <% if (userMainData.status === 'verified') { %>
+                            <ion-icon name="checkmark-circle-outline"></ion-icon> Verified
+                        <% } else { %>
+                            <ion-icon name="alert-circle-outline"></ion-icon> Not verified
+                        <% } %>
+                      </div>
+                        
+                       <a href="#" id="edit-profile-link" class="drop-down-link">
+                        <img src="/images/user-drop-down.png" alt="user" class="drop-down-icon">
+                        <p>Edit Profile</p>
+                        <span>></span>
+                       </a>
+                       <a href="#" id="edit-password-link" class="drop-down-link">
+                        <img src="/images/padlock.png" alt="user" class="drop-down-icon">
+                        <p>Change password</p>
+                        <span>></span>
+                       </a>
+                       <a href="#" id="user-logout" class="drop-down-link">
+                        <img src="/images/logout-drop-down.png" alt="user" class="drop-down-icon">
+                        <p>Log out</p>
+                        <span>></span>
+                       </a>
+                    </div>     
+                </div>
+            </div>
+        </div>
+        <div class="status-content">
+            <div class="first-content-status">
+                <div class="title-first-content"><h1>Status Hub</h1></div>
+                <div class="request info">
+                    <h3>
+                        <% 
+                        let totalRequests = 0;
+                        if (userServiceData && userServiceData.Type_of_request) {
+                            Object.values(userServiceData.Type_of_request).forEach(requestType => {
+                                totalRequests += requestType.length;
+                            });
+                        }
+                        %>
+                        <%= totalRequests %>
+                    </h3>
+                    <p>Request</p>
+                </div>
+                            
+                <div class="appointment info"><h3> <%=userAppointmentsWithDates.length%></h3><p>Appointments</p></div>
+                <div class="complaint info"><h3><%= userComplaint?.complaint_information?.length ?? 0 %></h3><p>Complaints</p></div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="Selectstatus">
+                <h2>Show Status:</h2>
+                <div>
+                    <select id="selectInput">
+                        <option value="requests" selected>Requests</option>
+                        <option value="appointments">Claiming Schedule</option>
+                        <option value="complaints">Complaints</option>
+                    </select>   
+                </div>      
+            </div>
+            <div class="service-section" id="requestChoice">
+                <div class="service-label">
+                    <h3>Type</h3>
+                    <h3>Date Requested</h3>
+                    <h3>Status</h3>
+                    <h3>Action</h3>
+                </div>
+                <% function formatDate(dateString) {
+                    const datetime = new Date(dateString);
+                    const year = datetime.getFullYear();
+                    const monthNames = [
+                        'January', 'February', 'March', 'April', 'May', 'June', 
+                        'July', 'August', 'September', 'October', 'November', 'December'
+                    ];
+                    const month = monthNames[datetime.getMonth()];
+                    const day = datetime.getDate();
+                    return `${month} ${day < 10 ? '0' + day : day}, ${year}`;
+                } %>
+                
+
+            
+                <%function getStatusClass(status) {
+                    if (status === 'Pending') {
+                        return 'pending';
+                    } else if (status === 'Completed') {
+                        return 'completed';
+                    } else if (status === 'Processing') {
+                        return 'processing';
+                    } else if (status === 'Rejected') {
+                        return 'rejected';
+                    } else {
+                        return ''; // Default class
+                    }
+                }%>
+                
+                <% if (!userServiceData || !userServiceData.Type_of_request) { %>
+                    <div class="noData">
+                        <h3>No Requested Documents</h3>
+                    </div>
+                <% } else { %>
+                    <% let hasRequests = false; %>
+                    <% Object.keys(userServiceData.Type_of_request).forEach(requestType => { %>
+                        <% if (userServiceData.Type_of_request[requestType].length > 0) { %>
+                            <% hasRequests = true; %>
+                            <% userServiceData.Type_of_request[requestType].forEach(request => { %>
+                                <div class="requested-tables" id="<%= request.id %>" data-type="<%= requestType %>">
+                                    <% if (requestType === 'Clearance') { %>
+                                        <h4>Barangay Clearance</h4>
+                                    <% } else if (requestType === 'Certificate') { %>
+                                        <h4>Barangay Certificate</h4>
+                                    <% } else if (requestType === 'Indigency') { %>
+                                        <h4>Barangay Indigency</h4>
+                                    <% } else if (requestType === 'Business') { %>
+                                        <h4>Business Certificate</h4>
+                                    <% } %>
+                                    <h4><%= formatDate(request.createdAt) %></h4>
+                                    <div class="table-status">
+                                        <div class="status-div"><%= request.status %></div>
+                                    </div>
+                                        <div class="actions">
+                                        <% 
+                                        // Check the request status
+                                        const status = request.status.toLowerCase(); // Convert status to lowercase for consistency
+                                        // Define an array of statuses that only need a delete icon
+                                        const limitedActionsStatuses = ["cancelled", "rejected", "completed"]; 
+                                        
+                                        if (limitedActionsStatuses.includes(status)) { %> 
+                                            <!-- If the status is in the limited actions array, show only the delete icon -->
+                                            <div><ion-icon title="Delete" size="large" name="trash-bin-outline" data-icon="delete-my-request"></ion-icon></div>
+                                        <% } else { %> 
+                                            <!-- Otherwise, show all the usual icons -->
+                                            <div><ion-icon title="View" size="large" name="eye-outline" data-icon="view-my-request"></ion-icon></div>
+                                            <div><ion-icon title="Edit" size="large" name="create-outline" data-icon="edit-my-request"></ion-icon></div>
+                                            <div><ion-icon title="Cancel" size="large" name="close-circle-outline" data-icon="cancel-my-request"></ion-icon></div>
+                                        <% } %>
+                                        </div>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    <% }) %>
+                    <% if (!hasRequests) { %>
+                        <div class="noData">
+                            <h3>No Requested Documents</h3>
+                        </div>
+                    <% } %>
+                <% } %>
+                
+                
+                
+            </div>
+
+
+            
+            <div class="service-section" id="appointmentChoice">
+                <div class="service-label">
+                  <h3>Type</h3>
+                  <h3>Appointment Date</h3>
+                  <h3>Status</h3>
+                  <h3>Action</h3>
+                </div>
+              
+                <% if (userAppointmentsWithDates.length === 0) { %>
+                  <div class="noData">
+                    <h3>No Appointments</h3>
+                  </div>
+                <% } else { %>
+                  <% userAppointmentsWithDates.forEach((appointment) => { %>
+                    <div class="requested-tables" 
+                      data-appointmentCode="<%= appointment.appointmentCode %>" 
+                      data-id="<%= appointment.id %>">
+                      <h4>
+                        <% if (appointment.appointmentType === 'Clearance') { %>
+                          Barangay Clearance
+                        <% } else if (appointment.appointmentType === 'Certificate') { %>
+                          Barangay Certificate
+                        <% } else if (appointment.appointmentType === 'Indigency') { %>
+                          Barangay Indigency
+                        <% } else if (appointment.appointmentType === 'Business') { %>
+                          Business Certificate
+                        <% }else if (appointment.appointmentType === 'Complaint') { %>
+                            Complaint
+                          <% } %>
+                      </h4>
+                      <h4>
+                        <%= new Date(appointment.dateOfAppointment).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %>
+                      </h4>
+                      <div class="table-status">
+                        <div class="status-div"><%= appointment.status %></div>
+                      </div>
+                      <div class="actions">
+                        <% 
+                        if (appointment.status==="Completed" || appointment.status==="Cancelled") { %> 
+                            <div><ion-icon title="Delete" size="large" name="trash-bin-outline" data-icon="delete-my-appointment"></ion-icon></div>
+                        <% } else { %> 
+                            <div><ion-icon title="View" size="large" name="eye-outline" data-icon="view-my-appointment"></ion-icon></div>
+                        <% } %>
+                        </div>
+                    </div>
+                  <% }); %>
+                <% } %>
+              </div>
+              
+
+
+
+
+
+
+
+              <div class="service-section" id="complaintChoice">
+                <div class="service-label">
+                  <h3>Issue</h3>
+                  <h3>Date Issued</h3>
+                  <h3>Status</h3>
+                  <h3>Action</h3>
+                </div>
+                
+                <% if (!userComplaint || userComplaint.complaint_information.length === 0) { %>
+                  <div class="noData">
+                    <h3>No Complaints</h3>
+                  </div>
+                <% } else { %>
+                  <% userComplaint.complaint_information.forEach((complaint) => { %>
+                    <div class="requested-tables" 
+                         data-id="<%= complaint.id %>"
+                         data-type="<%= complaint.category %>"
+                         data-allinfo='<%= JSON.stringify(complaint) %>'
+                         data-email="<%= userComplaint.email %>"
+                         > <!-- Convert the complaint object to a JSON string -->
+              
+                      <!-- Display the category of the complaint -->
+                      <h4><%= complaint.category %></h4>
+              
+                      <!-- Format the date -->
+                      <h4>
+                        <%= new Date(complaint.dateOfComplaint).toLocaleDateString('en-US', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric',
+                        }) %>
+                      </h4>
+              
+                      <!-- Display the status -->
+                      <div class="table-status">
+                        <div class="status-div"><%= complaint.status %></div>
+                      </div>
+              
+                      <!-- Define the actions -->
+                      <div class="actions">
+                        <% 
+                        if (complaint.status === "Resolved" || complaint.status === "Cancelled" || complaint.status === "Rejected") { %>
+                          <div><ion-icon title="Delete" size="large" name="trash-bin-outline" data-icon="delete-my-complaint"></ion-icon></div>
+                        <% } else { %>
+                          <div><ion-icon size="large" name="eye-outline" data-icon="view-my-complaint"></ion-icon></div>
+                          <div><ion-icon size="large" name="create-outline" data-icon="edit-my-complaint"></ion-icon></div>
+                          <div><ion-icon size="large" name="close-circle-outline" data-icon="cancel-my-complaint"></ion-icon></div>
+                        <% } %>
+                      </div>
+              
+                    </div>
+                  <% }); %>
+                <% } %>
+              </div>
+              
+            
+
+
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/JS/status-hub.js"></script>
+    <script src="/JS/user-log-out.js"></script>
+    <script src="/JS/user-change-password.js"></script>
+    <script src="/JS/user-edit-profile.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+
+        let profile = document.querySelector('.user-logo');
+        let dropMenu = document.getElementById('sub-menu');
+
+        profile.addEventListener('click', ()=>{
+                dropMenu.classList.toggle('open-menu');
+        });
+
+    
+    </script>
+    <script src="script.js"></script>
+    </body>
+</html>

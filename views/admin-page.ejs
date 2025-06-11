@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barangay 496 | Admin </title>
+    <link rel="icon" href="/images/loFinal.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/admin-css/dashboard-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/resident-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/to-verify-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/online-request-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/complaint-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/appointment-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/message-style.css" />
+    <link rel="stylesheet" href="/CSS/admin-css/verify-swal-style.css" />
+    <link rel="stylesheet" href="/CSS/appointment-style.css" />
+
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav id="main-navigation"> <!-- Unique ID for the navigation element -->
+      <div class="logo" data-role="main-logo"> <!-- Data attribute for role or context -->
+        <i class="bx bx-menu menu-icon" title="Menu"></i> <!-- Title attribute for accessibility -->
+        <img src="/images/admin-image/loFinal.png" alt="Barangay 496 Logo"> <!-- Improved alt text for accessibility -->
+        <span class="logo-name">Barangay 496</span>
+      </div>
+    
+      <div class="sidebar" data-role="sidebar"> <!-- Data attribute for sidebar -->
+        <div class="logo" data-role="sidebar-logo">
+          <i class="bx bx-menu menu-icon" title="Toggle Sidebar"></i> <!-- Title attribute -->
+          <img src="/images/admin-image/loFinal.png" alt="Barangay 496 Sidebar Logo">
+          <span class="logo-name">Barangay 496</span>
+        </div>
+        
+        <div class="sidebar-content" id="sidebar-content"> <!-- Unique ID -->
+          <ul class="lists" data-list="navigation"> <!-- Data attribute for identification -->
+            <li class="list">
+              <a href="#" class="nav-link" data-section="admin-dashboard"> <!-- Data attribute to identify section -->
+                <i class="bx bx-home-alt icon" title="Dashboard"></i> <!-- Title attribute -->
+                <span class="link">Dashboard</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link" data-section="resident-section"> <!-- Unique data-section -->
+                <i class='bx bxs-user-rectangle icon' title="Resident Record"></i>
+                <span class="link">Users Record</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link" data-section="to-verify-section"> <!-- Data-section for scripts -->
+                <i class='bx bx-user-check icon' title="Verify Residents"></i>
+                <span class="link">Verify Residents</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link" data-section="online-request-section"> <!-- Data-section for context -->
+                <i class='bx bx-receipt icon' title="Online Request"></i>
+                <span class="link">Online Requests</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link" data-section="complaints-section"> <!-- Data-section for ease of reference -->
+                <i class='bx bxs-file-export icon' title="Complaints"></i>
+                <span class="link">Complaints</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link" data-section="appointment-section"> <!-- Unique section attribute -->
+                <i class='bx bx-calendar-exclamation icon' title="Appointments"></i>
+                <span class="link">Claiming Schedule</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link" data-section="message-section"> <!-- Data-section for targeting -->
+                <i class='bx bx-message-dots icon' title="Messages"></i>
+                <span class="link">Messages</span>
+              </a>
+            </li>
+          </ul>
+    
+          <div class="bottom-content"> <!-- Data-role for identification -->
+            <li class="list">
+              <div  class="log-out" id="logout" style="cursor: pointer;"> <!-- Data-section for context -->
+                <i class="bx bx-log-out icon" title="Logout"></i>
+                <span class="link">Logout</span>
+              </div>
+            </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    
+    <section class="admin-dashboard">
+      <div class="dashBoard-title messageInbox">
+        <div class="dashboard-title-container">
+          <div class="title">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="view-section">
+            <div class="picture"><img src="/images/admin-image/user.png" alt=""></div>
+            <div class="icon"><h4>Total Users</h4><div class="view-residents">view</div></div>
+            <div class="number-residents"><%= fullUserInfo.length %></div>
+          </div>
+        </div>
+        <div class="messageinbox-container">
+          <div class="conts">
+            <h2>Recent Messages</h2>
+            <% if (!userMessages || userMessages.length === 0) { %> <!-- No messages -->
+              <div class="noData-Type">
+                <div class="no-data-type" style="z-index: 3000;">No recent messages</div>
+              </div>
+            <% } else { %> <!-- Display the recent messages -->
+              <% userMessages.slice(0, 3).forEach((message) => { %> 
+                <div class="profile-who-message">
+                  <p class="usernames"><%= message.name %></p> <!-- Display the message's name -->
+                  <p class="email-message"><%= message.email %></p> <!-- Display the message's email -->
+                </div>
+              <% }); %>
+            <% } %>
+              <div class="view-more" style="z-index: 2000;"> <!-- "View more" button -->
+                <div><p>View more</p></div>
+                <div class="icon"><ion-icon name="chevron-forward-outline" data-name="view-message"></ion-icon></div>
+              </div>
+          </div>
+        </div>
+        
+        
+      </div>
+
+
+      <div id="curve_chart" style="width: 650px; height: 400px; position: absolute; top: 310px; border-radius: 50%;"></div>
+      <div class="verify-view-section">
+        <div class="picture"><img src="/images/admin-image/shield.png" alt=""></div>
+        <div class="icon"><h4>To verify accounts</h4><div class="view-residents">view</div></div>
+        <div class="number-residents"><%= verifications.length %></div>
+      </div>
+    <div class="complaints-view-section">
+      <div class="picture"><img src="/images/admin-image/report.png" alt="Complaints"></div>
+      <div class="icon">
+        
+        <h4>Complaints</h4>
+        <div class="view-residents">view</div> 
+      </div>
+      <%
+      let totalComplaintsCounts = 0;
+    
+      // Accumulate the total complaints count by summing the length of complaint_information
+      userComplaints.forEach((complaintDoc) => {
+        totalComplaintsCounts += complaintDoc.complaint_information.length;
+      });
+     %>
+      <div class="number-residents"><%= totalComplaintsCounts %></div>
+    </div>
+      <%
+        // Initialize counters for each request type
+        let clearanceCounts = 0;
+        let certificateCounts = 0;
+        let indigencyCounts = 0;
+        let businessCertificateCounts = 0;
+
+        // Loop through userServiceData and accumulate counts based on request type
+        userServiceData.forEach((document) => {
+          // Check if the document has a Type_of_request object
+          if (document.Type_of_request) {
+            if (Array.isArray(document.Type_of_request.Clearance)) {
+              clearanceCounts += document.Type_of_request.Clearance.length; // Count Clearance requests
+            }
+            if (Array.isArray(document.Type_of_request.Certificate)) {
+              certificateCounts += document.Type_of_request.Certificate.length; // Count Certificate requests
+            }
+            if (Array.isArray(document.Type_of_request.Indigency)) {
+              indigencyCounts += document.Type_of_request.Indigency.length; // Count Indigency requests
+            }
+            if (Array.isArray(document.Type_of_request.Business)) {
+              businessCertificateCounts += document.Type_of_request.Business.length; // Count Business Certificate requests
+            }
+          }
+        });
+      %>
+      <div class="pending-request-section">
+        <div class="text">
+          <h3>Document Request</h3>
+          <p>All request are here</p>
+        </div>
+        <div class="first-conts">
+          <h4>Barangay<br> <span>Clearance</span><hr></h4>
+          <h1><%= clearanceCounts %></h1>
+          <div class="icon"><ion-icon size="large"name="document-lock-outline"></ion-icon></div>
+        </div>
+        <div class="first-conts">
+          <h4>Barangay<br> <span>Indigency</span><hr></h4>
+          <h1><%= indigencyCounts %></h1>
+          <div class="icon"><ion-icon size="large"name="documents-outline"></ion-icon></div>
+        </div>
+        <div class="first-conts">
+          <h4>Barangay<br><span> Certificate</span><hr></h4>
+          <h1><%= certificateCounts %></h1>
+          <div class="icon"><ion-icon size="large"name="document-text-outline"></ion-icon></div>
+        </div>
+        <div class="first-conts">
+          <h4>Business<br> <span>Certificate</span><hr></h4>
+          <h1><%= businessCertificateCounts %></h1>
+          <div class="icon"><ion-icon size="large"name="newspaper-outline"></ion-icon></div>
+        </div>
+
+      </div>
+      <div class="second-conts">
+        <h2>Full<br>view</h2>
+        <div class="icon-second"><ion-icon size="large"name="chevron-forward-circle" data-online="dataViewOnlineRequest"></ion-icon></ion-icon></div>
+      </div>
+      <div class="appointment-conts">
+        <div class="days">
+          <p class="number">13</p>
+          <p class="text">Tuesday</p>
+        </div>
+        <div class="month-year">
+          <p>December</p>
+          <p>2024</p>
+        </div>
+      </div>
+      <div class="appointment-view-section">
+        <div class="picture"><img src="/images/admin-image/calendar-silhouette.png" alt=""></div>
+        <div class="icon"><h4>Claiming Schedule</h4><div class="view-residents">view</div></div>
+        <div class="number-residents"><%=appointmentsWithDates.length%></div>
+      </div>
+      <div class="admin-footer">
+        <p>©</p>
+        <p id="site">Barangay 496,</p>
+        <p>All Right Reserved.</p>
+      </div>
+      <div class="send-message-section">
+        <p class="name">Send email</p>
+        <div class="input-message">
+          <p>To:</p>
+          <input type="email" placeholder="Recipient Email">
+        </div>
+        <div class="snd-message"><ion-icon name="alert-circle-outline"></ion-icon><p>Required</p></div >
+        <button id="writeMessage">Write</button>
+      </div>
+    </section>
+    
+   
+    <section class="resident-section">
+      <div class="heading">
+        <h1>Users Record</h1>
+        <!-- Display the total number of residents -->
+        <div class="nosResident">
+          <p style="font-size: 25px;"><%= fullUserInfo.length %></p>
+          <p style="font-size: 14px;">Total Users</p>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search User">
+          <ion-icon size="large" name="search-outline"></ion-icon>
+        </div>
+      </div>
+      <hr id="black">
+      
+      <div class="flex-conts">
+        <div class="noData-Type" style="display: none; margin: 0 auto; width: 500px; font-size: 80px;">
+          <div class="no-data-type">No match found</div>
+        </div>
+        <% if (fullUserInfo.length === 0) { %>
+          <div class="noData-Type">
+            <div class="no-data-type">No residents found</div>
+          </div>
+        <% } else { %>
+          <!-- Iterate through each resident and generate their information -->
+          <% fullUserInfo.forEach((resident) => { %>
+            <% 
+              const user = userMain.find((u) => u.email === resident.email); // Find the user in userMain
+              const profileImage = user ? user.profileImage : '/images/default-profile.jpg'; // Use default if not found
+            %>
+            <div class="for-searching">
+              <div class="resident-conts" data-email="<%= resident.email %>" data-profileImage="<%= profileImage %>">
+                <img src="<%= profileImage %>" alt="Resident Photo"> <!-- Set the profile image source -->
+                <p id="username"><%= resident.userName %></p>
+                <p id="gmail"><%= resident.email %></p>
+                
+                <% if (resident.status === 'verified') { %>
+                  <div class="verified-status">
+                    <ion-icon name="checkmark-circle-outline"></ion-icon> Verified
+                  </div>
+                <% } else { %>
+                  <div class="not-verified-status">
+                    <ion-icon name="close-circle-outline"></ion-icon> Not Verified
+                  </div>
+                <% } %>
+      
+                <div class="active-status">
+                  <ion-icon size="small" name="ellipse"></ion-icon> offline
+                </div>
+              </div>
+
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </section>
+    
+    
+  
+    <section class="to-verify-section">
+      <div class="title-conts">
+        <h1>To Verify User</h1>
+        <!-- Display the total count of verifications -->
+        <div class="nosVerify">
+          <p style="font-size: 25px;"><%= verifications.length %></p> <!-- Total number of verifications -->
+          <p style="font-size: 14px;">Total</p>
+        </div>
+      </div>
+      <hr>
+      <div class="rows-verify">
+        <h3>Username</h3>
+        <h3>Email</h3>
+        <h3>Status</h3>
+        <h3>Action</h3>
+      </div>
+    
+      <div class="user-conts-verify">
+        <% if (verifications.length === 0) { %> <!-- Check if there are no verifications -->
+          <div class="noData-Type">
+            <div class="no-data-type">No Pending Verification</div>
+          </div>
+        <% } else { %> <!-- Otherwise, loop through the verifications -->
+          <% verifications.forEach((verification) => { %>
+            <div class="each-user-conts" data-email="<%= verification.email %>">
+              <%
+              // Find the matching user in userMain based on email
+              let matchingUsername = "Unknown User"; // Default value
+              userMain.forEach(user => {
+                if (user.email === verification.email) {
+                  matchingUsername = user.userName; // Set the username if a match is found
+                }
+              });
+    
+              // Determine the status and background color
+              let statusText = "To Verify";
+    
+              if (verification.status === "Approved") {
+                statusText = "Approved"; // If status is approved, set the correct text
+              }else if(verification.status === "Rejected"){
+                statusText = "Rejected";
+              }
+              %>
+    
+              <h4><%= matchingUsername %></h4> <!-- Display the username -->
+              <h4><%= verification.email %></h4> <!-- Display the email address -->
+    
+              <div class="verify-status">
+                <% if (statusText === "To Verify") { %> <!-- Status and icon for "To Verify" -->
+                  <div class="status-conts" >
+                    <%= statusText %>
+                    <ion-icon title="Verify" name="search-outline"></ion-icon> <!-- Icon for verification -->
+                  </div>
+                <% } else if (statusText === "Approved") { %> <!-- Status for "Approved" -->
+                  <div class="status-conts">
+                    <%= statusText %>
+                  </div>
+                <% } else if (statusText === "Rejected") { %> <!-- Status for "Approved" -->
+                  <div class="status-conts">
+                    <%= statusText %>
+                  </div>
+                <% } %>
+              </div>
+    
+              <div class="actions">
+                <% if (statusText === "Approved" || statusText === "Rejected") { %> <!-- Change action to "Delete" if approved -->
+                  <div class="delete"><ion-icon title="Delete" size="large" name="close-circle-outline" style="color: red;"></ion-icon></div>
+                <% } else { %> <!-- Otherwise, use "Verify" -->
+                  <div class="search" id="Verify-button">Verify</ion-icon></div>
+                <% } %>
+              </div>
+            </div>
+          <% }) %> <!-- End loop -->
+        <% } %>
+      </div>
+    
+    </section>
+    
+      
+      
+
+    <section class="online-request-section">
+      <% 
+      // Initialize counters for each certificate type
+      let certificateCount = 0;
+      let indigencyCount = 0;
+      let clearanceCount = 0;
+      let businessCertificateCount = 0;
+      
+      // Iterate through userServiceData and count the occurrences of each type
+      userServiceData.forEach(data => {
+        Object.keys(data.Type_of_request).forEach(type => {
+          const requests = data.Type_of_request[type];
+          
+          requests.forEach(request => {
+            if (type === 'Certificate') {
+              certificateCount++;
+            } else if (type === 'Indigency') {
+              indigencyCount++;
+            } else if (type === 'Clearance') {
+              clearanceCount++;
+            } else if (type === 'Business') {
+              businessCertificateCount++;
+            }
+          });
+        });
+      });
+      %>   
+      
+              <!-- Define a function to get the formatted request type -->
+              <%
+              const getFormattedType = (type) => {
+                if (["Clearance", "Certificate", "Indigency"].includes(type)) {
+                  return `Barangay ${type}`; // Add 'Barangay' prefix
+                } else if (type === "Business") {
+                  return "Business Certificate"; // For Business
+                } else {
+                  return type; // Return type as-is
+                }
+              };
+            
+              // Map to store username for each email
+              const userEmails = new Map();
+              userMain.forEach(user => {
+                userEmails.set(user.email, user.userName); // Map email to username
+              });
+            
+              // Loop through userServiceData to extract requests for each status
+              const requestsByStatus = {
+                Pending: [],
+                Approved: [],
+                Processing: [],
+                Completed: [],
+                Cancelled: [],
+                Rejected: []
+              };
+            
+              userServiceData.forEach(data => {
+                // Iterate over each type in Type_of_request and classify by status
+                Object.keys(data.Type_of_request).forEach(type => {
+                  const requests = data.Type_of_request[type];
+                  requests.forEach(request => {
+                    if (requestsByStatus[request.status]) {
+                      
+                      requestsByStatus[request.status].push({
+                        email: data.email,
+                        type: type, // Original type (Clearance, Certificate, etc.)
+                        id: request.id, // Unique request ID
+                        createdAt: request.createdAt, // Request creation date
+                        name: request.name, // Request name
+                      });
+                    }
+                  });
+                });
+              });
+              %>
+      <div class="title-conts">
+        <h1>Online Requests</h1>
+        <!-- Insert the computed counts into the appropriate elements -->
+        <div class="nosBrgy-certi">
+          <p style="font-size: 25px;"><%= certificateCount %></p>
+          <p style="font-size: 14px;">Barangay Certificate</p>
+        </div>
+        <div class="nosBrgy-indigency">
+          <p style="font-size: 25px;"><%= indigencyCount %></p>
+          <p style="font-size: 14px;">Barangay Indigency</p>
+        </div>
+        <div class="nosBrgy-clearance">
+          <p style="font-size: 25px;"><%= clearanceCount %></p>
+          <p style="font-size: 14px;">Barangay Clearance</p>
+        </div>
+        <div class="nosBusiness-certi">
+          <p style="font-size: 25px;"><%= businessCertificateCount %></p>
+          <p style="font-size: 14px;">Business Certificate</p>
+        </div>
+      </div>
+      <div class="request-Selectstatus">
+        <h2>Show Status:</h2>
+        <div class="underline">
+            <select id="selectInput">
+                <option value="Pending" selected>Pending(<%= requestsByStatus.Pending.length %>)</option>
+                <option value="Approved">Approved(<%= requestsByStatus.Approved.length %>)</option>
+                <option value="Processing">Processing(<%= requestsByStatus.Processing.length %>)</option>
+                <option value="Completed">Completed(<%= requestsByStatus.Completed.length %>)</option>
+                <option value="Rejected">Rejected(<%= requestsByStatus.Rejected.length %>)</option>
+                <option value="Cancel">Cancelled(<%= requestsByStatus.Cancelled.length %>)</option>
+            </select>   
+        </div>      
+      </div>
+      <hr>
+      <div class="rows-verify">
+        <h3>Username</h3>
+        <h3>Type</h3>
+        <h3>Date Requested</h3>
+        <h3>Status</h3>
+        <h3>Action</h3>
+      </div>
+      <div class="user-conts">
+
+
+      
+        <div class="Pending" style="display: none;">
+          <% if (requestsByStatus.Pending.length === 0) { %> 
+            <div class="noData-Type">
+              <div class="no-data-type">No pending requests</div>
+            </div>
+          <% } else { %>
+            <% requestsByStatus.Pending.forEach((req) => { %>
+              <div class="each-user-conts" data-email="<%= req.email %>" data-type="<%= req.type %>" data-id="<%= req.id %>">
+                <h4><%= userEmails.get(req.email) || 'Unknown User' %></h4> 
+                <h4><%= getFormattedType(req.type) %></h4>
+                <h4><%= new Date(req.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></h4>
+                <div class="verify-status">
+                  <div class="online-status-conts">Pending</div>
+                </div>
+                <div class="actions">
+                  <div class="accept-or-not" id="Verify-button">View Details</div>
+                </div>
+              </div>
+            <% }); %> 
+          <% } %>
+        </div> <!-- End of Pending section -->
+    
+        <!-- Approved section -->
+        <div class="Approved" style="display: none;">
+          <% if (requestsByStatus.Approved.length === 0) { %> 
+            <div class="noData-Type">
+              <div class="no-data-type">No approved requests</div>
+            </div>
+          <% } else { %>
+            <% requestsByStatus.Approved.forEach((req) => { %>
+              <div class="each-user-conts" data-email="<%= req.email %>" data-type="<%= req.type %>" data-id="<%= req.id %>">
+                <h4><%= userEmails.get(req.email) || 'Unknown User' %></h4> 
+                <h4><%= getFormattedType(req.type) %></h4> 
+                <h4><%= new Date(req.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></h4> 
+                <div class="verify-status">
+                  <div class="online-status-conts">Approved</div>
+                </div>
+                <div class="actions">
+                  <div class="generate-file" id="Verify-button">Generate File</div>
+                </div>
+              </div>
+            <% }); %>
+          <% } %>
+        </div> <!-- End of Approved section -->
+    
+        <!-- Process section -->
+        <div class="Processing" style="display: none;">
+          <% if (requestsByStatus.Processing.length === 0) { %> 
+            <div class="noData-Type">
+              <div class="no-data-type">No processing requests</div>
+            </div>
+          <% } else { %>
+            <% requestsByStatus.Processing.forEach((req) => { %>
+              <div class="each-user-conts" data-email="<%= req.email %>" data-type="<%= req.type %>" data-id="<%= req.id %>">
+                <h4><%= userEmails.get(req.email) || 'Unknown User' %></h4> 
+                <h4><%= getFormattedType(req.type) %></h4> 
+                <h4><%= new Date(req.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></h4> 
+                <div class="verify-status">
+                  <div class="online-status-conts">Processing</div>
+                </div>
+                <div class="actions">
+                  <div class="generate-file" id="Verify-button">Generate File</div>
+                </div>
+              </div>
+            <% }); %>
+          <% } %>
+        </div> <!-- End of Process section -->
+    
+        <!-- Completed section -->
+        <div class="Completed" style="display: none;">
+          <% if (requestsByStatus.Completed.length === 0) { %> 
+            <div class="noData-Type">
+              <div class="no-data-type">No Completed Requests</div>
+            </div>
+          <% } else { %>
+            <% requestsByStatus.Completed.forEach((req) => { %>
+              <div class="each-user-conts" data-email="<%= req.email %>" data-type="<%= req.type %>" data-id="<%= req.id %>">
+                <h4><%= userEmails.get(req.email) || 'Unknown User' %></h4> 
+                <h4><%= getFormattedType(req.type) %></h4> 
+                <h4><%= new Date(req.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></h4> 
+                <div class="verify-status">
+                  <div class="online-status-conts">Completed</div>
+                </div>
+                <div class="actions">
+                  <div class="complete-or-rejected" id="Verify-button">View Details</ion-icon></div>
+                </div>
+              </div>
+            <% }); %>
+          <% } %>
+        </div> <!-- End of Completed section -->
+    
+        <!-- Rejected section -->
+        <div class="Rejected" style="display: none;">
+          <% if (requestsByStatus.Rejected.length === 0) { %> 
+            <div class="noData-Type">
+              <div class="no-data-type">No rejected requests</div>
+            </div>
+          <% } else { %>
+            <% requestsByStatus.Rejected.forEach((req) => { %>
+              <div class="each-user-conts" 
+                data-email="<%= req.email %>" 
+                data-type="<%= req.type %>"
+                data-id="<%= req.id %>">
+                <h4><%= userEmails.get(req.email) || 'Unknown User' %></h4> 
+                <h4><%= getFormattedType(req.type) %></h4>
+                <h4><%= new Date(req.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></h4> 
+                <div class="verify-status">
+                  <div class="online-status-conts">Rejected</div>
+                </div>
+                <div class="actions">
+                  <div class="complete-or-rejected" id="Verify-button">View Details</div>
+                </div>
+              </div>
+            <% }); %>
+          <% } %> <!-- End of Rejected section -->
+        </div> 
+        <div class="Cancel" style="display: none;">
+          <% if (requestsByStatus.Cancelled.length === 0) { %> 
+            <div class="noData-Type">
+              <div class="no-data-type">No Cancelled requests</div>
+            </div>
+          <% } else { %>
+            <% requestsByStatus.Cancelled.forEach((req) => { %>
+              <div class="each-user-conts" 
+                data-email="<%= req.email %>" 
+                data-type="<%= req.type %>"
+                data-id="<%= req.id %>">
+                <h4><%= userEmails.get(req.email) || 'Unknown User' %></h4> 
+                <h4><%= getFormattedType(req.type) %></h4>
+                <h4><%= new Date(req.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></h4> 
+                <div class="verify-status">
+                  <div class="online-status-conts">Cancelled</div>
+                </div>
+                <div class="actions">
+                  <div class="complete-or-rejected" id="Verify-button">View Details</div>
+                </div>
+              </div>
+            <% }); %>
+          <% } %> <!-- End of Rejected section -->
+        </div>
+      </div><!-- End of user-conts -->
+    </section>
+
+
+ 
+    <section class="complaints-section">
+      <%
+      const complaintsByStatus = {
+        Pending: [],
+        Acknowledged: [],
+        Resolved: [],
+        Cancelled: [],
+        Rejected: [],
+      };
+
+      let totalComplaintsCount = 0;
+  
+
+      // Organize complaints by their status
+      userComplaints.forEach((complaintDoc) => {
+        totalComplaintsCount += complaintDoc.complaint_information.length;
+        complaintDoc.complaint_information.forEach((complaint) => {
+          const user = userMain.find((u) => u.email === complaintDoc.email);
+          const userName = user ? user.userName : 'Unknown';
+          const formattedDate = new Date(complaint.dateOfComplaint).toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          });
+  
+          complaintsByStatus[complaint.status]?.push({
+            email: complaintDoc.email,
+            id: complaint.id,
+            category: complaint.category,
+            status: complaint.status,
+            userName: userName,
+            formattedDate: formattedDate,
+          });
+        });
+      });
+      %>
+      <div class="title-conts">
+        <h1>Manage Complaints</h1>
+        <div class="nosVerify">
+          <p style="font-size: 25px;"><%= totalComplaintsCount %></p>
+          <p style="font-size: 14px;">Total</p>
+        </div>
+      </div>
+      <div class="complaint-Selectstatus">
+        <h2>Show Status:</h2>
+        <div class="underline">
+          <select id="selectInput">
+            <option value="Pending" selected>Pending(<%= complaintsByStatus.Pending.length %>)</option>
+            <option value="Acknowledged">Acknowledged(<%= complaintsByStatus.Acknowledged.length %>)</option>
+            <option value="Resolved">Resolved(<%= complaintsByStatus.Resolved.length %>)</option>
+            <option value="Rejected">Rejected(<%= complaintsByStatus.Rejected.length %>)</option>
+            <option value="Cancelled">Cancelled(<%= complaintsByStatus.Cancelled.length %>)</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="rows-verify">
+        <h3>Username</h3>
+        <h3>Issue Category</h3>
+        <h3>Date Issued</h3>
+        <h3>Status</h3>
+        <h3>Action</h3>
+      </div>
+      <div class="user-conts-complaints">
+        <!-- Define status-based sections -->
+        <% Object.keys(complaintsByStatus).forEach((status) => { %>
+          <div class="<%= status %>" style="display: none;">
+            <% if (complaintsByStatus[status].length === 0) { %> 
+              <div class="noData-Type">
+                <div class="no-data-type">No <%= status %> Complaints</div>
+              </div>
+            <% } else { %>
+              <% complaintsByStatus[status].forEach((complaint) => { %>
+                <div class="each-user-conts" data-email="<%= complaint.email %>" data-id="<%= complaint.id %>">
+                  <h4><%= complaint.userName %></h4> 
+                  <h4><%= complaint.category %></h4> 
+                  <h4><%= complaint.formattedDate %></h4> 
+                  <div class="verify-status">
+                    <div class="online-status-conts"><%= complaint.status %></div>
+                  </div>
+                  <div class="actions-complaints">
+                    <% if (complaint.status === 'Pending') { %>
+                      <!-- If status is Pending, display the 'view-complaints' icon -->
+                      <div class="view-complaints" id="Verify-button" data-icon="acknowledge-user-complaints">View Complaint</div>
+                      <% } else if (complaint.status === 'Acknowledged') { %>
+                        <!-- If status is Solved, display another icon -->
+                        <div class="view-complaints" id="Verify-button" data-icon="solved-user-complaints">Resolve Complaint</div>
+                      <% } else { %>
+                        <!-- Default action if the status doesn't match the previous conditions -->
+                        <div class="view-complaints" id="Verify-button" data-icon="view-user-complaints">View Complaint</div>
+                      <% } %>
+                  </div>
+                </div>
+              <% }); %>
+            <% } %>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+    
+    
+
+    <section class="appointment-section">
+      <div class="title-conts">
+        <h1>Document Claiming Schedule</h1>
+        <div class="nosVerify">
+          <p style="font-size: 25px;"><%= appointmentsWithDates.length %></p>
+          <p style="font-size: 14px;">Total</p>
+        </div>
+      </div>
+      <hr>
+      <div class="rows-verify">
+        <h3>Username</h3>
+        <h3>Type of Document</h3>
+        <h3>Appointment Date</h3>
+        <h3>Status</h3>
+        <h3>Action</h3>
+      </div>
+      <div class="user-conts-verify">
+        <% if (appointmentsWithDates.length === 0) { %>
+          <div class="noData-Type">
+            <div class="no-data-type">No appointments</div>
+          </div>
+        <% } else { %>
+          <% 
+          appointmentsWithDates.forEach((appointment) => {
+            let matchingDocument = null; // Initialize variable to store the document where the appointment is found
+            let matchingRequest = null;
+            let userName;
+            let formattedDate;
+          
+            // Traverse through userServiceData to find the document and the matching request
+            userServiceData.forEach((doc) => {
+              const requestTypeArray = doc.Type_of_request?.[appointment.appointmentType] || []; // Get the array for the appointment type
+              const foundRequest = requestTypeArray.find((request) => request.id === appointment.id); // Find the matching request by ID
+          
+              if (foundRequest) {
+                matchingRequest = foundRequest; // Set the found request
+                matchingDocument = doc; // Set the matching document
+              }
+            });
+          
+            if (matchingDocument && matchingRequest) {
+              // Get userName from userMain using email from matchingDocument
+              userName = userMain.find((u) => u.email === matchingDocument.email)?.userName || 'Unknown'; // Get userName or 'Unknown'
+          
+              // Format the appointment date
+              formattedDate = new Date(appointment.dateOfAppointment).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              });
+            }
+          %>
+            <div class="each-user-conts" data-id="<%= appointment.id %>" data-email="<%=matchingDocument.email%>" data-code="<%= appointment.appointmentCode %>">
+              <h4><%= userName %></h4>
+              <h4>
+                <% if (appointment.appointmentType === 'Clearance') { %>
+                  Barangay Clearance
+                <% } else if (appointment.appointmentType === 'Certificate') { %>
+                  Barangay Certificate
+                <% } else if (appointment.appointmentType=== 'Indigency') { %>
+                  Barangay Indigency
+                <% } else if (appointment.appointmentType === 'Business') { %>
+                  Business Certificate
+                <% } else { %>
+                  Unknown Type
+                <% } %>
+              </h4>
+              <h4><%= formattedDate %></h4>
+              <div class="verify-status">
+                <div class="status-conts status-div"><%= appointment.status %></div>
+              </div>
+              <div class="actions">
+                <div class="view-appointment-icon" id="Verify-button" data-icon="admin-view-appointment">View Schedule</div>
+              </div>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </section>
+    
+    
+
+    <section class="message-section">
+      <div class="title-conts">
+        <h1>Messages</h1>
+        <div class="nosVerify"><p style="font-size: 25px;"><%=userMessages.length %></p><p style="font-size: 14px;">Total</p></div>
+      </div>
+      <hr>
+      <div class="rows-verify">
+  
+        <h3>Name</h3>
+        <h3>Email</h3>
+        <h3>Status</h3>
+        <h3>Action</h3>
+      </div>
+    
+      <div class="user-conts-verify">
+        <% if (userMessages.length === 0) { %>
+          <div class="noData-Type">
+            <div class="no-data-type">No messages</div>
+          </div>
+        <% } else { %>
+          <!-- Loop through each message in userMessages -->
+          <% userMessages.forEach((message) => { %>
+          <div class="each-user-conts" data-email="<%= message.email %>" data-id="<%= message._id %>">
+            <h4><%= message.name %></h4>
+            <h4><%= message.email %></h4>
+            <div class="verify-status">
+              <div class="online-status-conts"><%=message.status%></div> <!-- Example status -->
+            </div>
+            <div class="actions">
+              <% if (message.status === 'Pending') { %>
+            
+                <div class="view-message-icon" data-icon="view-user-messages" id="Verify-button">Reply</div>
+                <% } else { %>
+                  
+                  <div class="view-complaints"><ion-icon name="trash-bin-outline" size="large" data-icon="delete-user-messages"></ion-icon></ion-icon></div>
+                <% } %>
+            </div>
+          </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </section>
+    
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+          google.charts.load('current', { packages: ['corechart'] });
+          google.charts.setOnLoadCallback(drawChart);
+        
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Month', 'Sign-Ups'], // Define the headers for the data table
+              ['January', 120], // Replace with actual sign-up data
+              ['February', 150],
+              ['March', 180],
+              ['April', 220],
+              ['May', 270],
+              ['June', 310],
+              ['July', 350],
+              ['August', 390],
+              ['September', 420],
+              ['October', 450],
+              ['November', 480],
+              ['December', 520]
+            ]);
+        
+            var options = {
+              title: 'User Sign-Ups Over Time', // Set chart title
+              curveType: 'function', // Optional: smooths out the line graph
+              legend: { position: 'bottom' },
+              hAxis: {
+                title: 'Month', // Horizontal axis label
+              },
+              vAxis: {
+                title: 'Number of Sign-Ups', // Vertical axis label
+              },
+              colors: ['#f8c44c'] // Optional: set the line color
+            };
+        
+            // Create the chart and render it in the div with ID 'curve_chart'
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        
+            chart.draw(data, options); // Draw the chart with the data and options
+          }
+    </script>
+    <script src="/JS/admin-js/main-dashboard-all-js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/JS/admin-js/verification-process.js"></script>
+    <script src="/JS/admin-js/online-request-process.js"></script>
+    <script src="/JS/admin-js/appointment-view-process.js"></script>
+    <script src="/JS/admin-js/complaint-process.js"></script>
+    <script src="/JS/admin-js/resident-view-process.js"></script>
+    <script src="/JS/admin-js/message-procces.js"></script>
+  </body>
+</html>

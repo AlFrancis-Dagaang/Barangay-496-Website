@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barangay Clearance</title>
+  <style>
+    /* Set the page size for printing */
+    @page {
+      size: 8.5in 11in; /* Set paper size to 8.5 x 11 inches (short bond paper) */
+      margin: 2cm; /* Set margin for print */
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+
+      }
+
+      .print-button {
+        display: none; /* Hide the print button during printing */
+      }
+
+    }
+
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    .header img{
+      width: 80px;
+    }
+
+    .header-text{
+      text-align: center;
+      
+    }
+
+    .header-text p{
+      margin: 0;
+    }
+
+    body{
+      font-family: 'Times New Roman', Times, serif; /* Consistent font family */
+    }
+
+
+    .content {
+      
+      font-size: 18px; /* Standard font size */
+      margin: 20px; /* Margin for the content */
+    }
+
+    .certificate-title {
+      text-align: center; /* Center-align the certificate title */
+      font-size: 2em; /* Larger font size for the certificate title */
+      font-weight: bold; /* Make it bold */
+      text-transform: uppercase; /* Make it uppercase */
+      text-decoration: underline;
+      margin-top: 100px; /* Extra margin at the top */
+      margin-bottom: 100px; /* Extra margin at the top */
+
+    }
+
+    .certificate-body {
+      text-align: justify; /* Justify the text for a clean layout */
+      line-height: 1.5; /* Spacing between lines */
+      text-indent: 20px;
+    }
+
+    .certificate-signature{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-right: 30px;
+      margin-top: 80px;
+    }
+
+    .certificate-signature p{
+      margin: 0;
+    }
+
+    .certificate-signature .content{
+      text-align: start;
+    }
+
+    .footer{
+      border-bottom: 2px solid black;
+      font-style: italic;
+      font-size: 14px;
+      padding-left: 10px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+
+    .print-button {
+      text-align: center; /* Center-align the button */
+      margin-top: 20px; /* Add margin at the top */
+    }
+
+    .print-button button {
+      padding: 10px 20px; /* Padding for the button */
+      background-color: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none; /* No border */
+      border-radius: 5px; /* Rounded corners */
+      font-size: 1em; /* Font size */
+      cursor: pointer; /* Cursor changes to pointer */
+    }
+
+    .print-button button:hover {
+      background-color: #45a049; /* Darker shade on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <img src="/images/admin-image/sideLogoBrgy.png" alt="">
+    </div>
+    <div class="header-text">
+      <p>REPUBLIC OF THE PHILIPPINES</p>
+      <p>BARANGAY 496 ZONE 49</p>
+      <p>District IV – Manila</p>
+      <p>OFFICE OF THE BARANGAY CHAIRMAN</p>
+    </div>
+    <div>
+      <img src="/images/admin-image/sideLogoMunicapality.png" alt="">
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="certificate-title">Barangay Clearance</div> <!-- Certificate title -->
+    
+    <div class="certificate-body">
+      This is to certify that <strong><%= matchingRequest.name.replace(/\./g, '') %></strong> is a resident of this barangay, presently residing at <strong><%= UserFullInformation.address %></strong> is known to be of good moral character ang law abiding citizen in the community
+      <br><br>
+      This certification is being issued upon the request of  the above  named  for
+        whatever  purpose  it  may  serve.  Any help  extended  to  him/her  will be  highly
+        appreciated by the undersigned.
+
+      <br><br>
+      NOTE: for <strong>><%= matchingRequest.purpose %></strong> purposes only..
+    </div>
+    <div class="certificate-signature">
+      <div class="content">
+        <p>Very truly yours,</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>EDMOND B. DELA PAZ</p>
+        <p>Barangay Chairman</p>
+      </div>
+    </div>
+    <div class="footer">
+      Note: Not valid if no official seal and signature of Barangay Chairman
+    </div>
+  </div>
+
+
+  <script>window.print()</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XSS Test</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 30px;">
+
+  <div style="max-width: 500px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; color: #333;">XSS Test Form</h2>
+
+    <form onsubmit="event.preventDefault(); sayHi();">
+      <input 
+        id="input" 
+        placeholder="What's your name?" 
+        style="width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px;" 
+      />
+      <button 
+        type="submit" 
+        style="width: 100%; padding: 10px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;"
+      >
+        Submit
+      </button>
+    </form>
+
+    <div 
+      id="output" 
+      style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; min-height: 40px;"
+    ></div>
+  </div>
+
+  <script>
+    // Simulate sensitive cookie data
+    document.cookie = "password=papa; path=/";
+    window.x = "myPasswordishackMe";
+
+    function sayHi() {
+      let input = document.getElementById("input").value;
+
+      // Vulnerable: user input is injected directly
+      document.getElementById("output").innerHTML ="Hi "+ input +"!!";
+    }
+  </script>
+</body>
+</html>

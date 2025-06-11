@@ -1,0 +1,141 @@
+.appointment-section{
+    margin: 70px auto;
+    width: 1200px;
+    background-color: white;
+}
+
+.title-conts{
+    height: 150px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 217, 92)
+}
+
+.title-conts h1{
+    font-size: 40px;
+}
+
+.title-conts .nosVerify{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.appointment-section hr {
+    margin-top: 20px;
+    height: 10px;
+    background-color: rgb(41, 41, 41);
+    border: none;
+}
+
+.rows-verify{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+}
+
+.rows-verify > *{
+    flex: 1; /* Each child element takes up equal space */
+    text-align: center; /* Optional: Center-align text within each element */
+}
+.each-user-conts{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    padding: 40px 0;
+    margin-top: 10px;
+}
+
+.each-user-conts > *{
+    flex: 1; /* Each child element takes up equal space */
+    text-align: center; /* Optional: Center-align text within each element */
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+.actions .middle{
+    margin: 0 30px;
+}
+
+.actions .middle ion-icon{
+    color: rgb(6, 123, 8);
+}
+
+.actions .search ion-icon{
+    color: rgb(52, 150, 255);
+}
+
+.verify-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+.status-conts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    border-radius: 12px;
+    background-color: #f4ce74;
+    font-size: 14px;
+}
+
+.status-conts ion-icon{
+    margin-left: 5px;
+}
+
+.actions ion-icon{
+    cursor: pointer;
+}
+.rejected ion-icon{
+    color: red;
+}
+
+.view-button-appointments{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-appointment-icon ion-icon{
+    color: rgb(52, 150, 255);
+}
+
+.view-button-appointments #complete-appointment, .view-button-appointments #cancel-appointment{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: .5s;
+    font-size: 16px;
+}
+
+.view-button-appointments #complete-appointment{
+    background-color: #f4ce74;
+    color: rgb(21, 20, 20);
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.view-button-appointments #cancel-appointment{
+    background-color: rgb(41, 40, 40);
+    color: white;
+    margin-left: 20px;
+}
+
+.view-button-appointments button:hover{
+    opacity: .8;
+}

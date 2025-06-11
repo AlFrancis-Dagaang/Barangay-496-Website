@@ -1,0 +1,238 @@
+.message-section{
+    margin: 70px auto;
+    width: 1200px;
+    background-color: white;
+}
+
+.title-conts{
+    height: 150px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 217, 92);
+}
+
+.title-conts h1{
+    font-size: 40px;
+}
+
+.title-conts .nosVerify{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-section hr {
+    margin-top: 20px;
+    height: 10px;
+    background-color: rgb(41, 41, 41);
+    border: none;
+}
+
+.rows-verify{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+}
+
+.rows-verify > *{
+    flex: 1; /* Each child element takes up equal space */
+    text-align: center; /* Optional: Center-align text within each element */
+}
+.each-user-conts{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    padding: 40px 0;
+    margin-top: 10px;
+}
+
+.each-user-conts > *{
+    flex: 1; /* Each child element takes up equal space */
+    text-align: center; /* Optional: Center-align text within each element */
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+.actions .middle{
+    margin: 0 30px;
+}
+
+.view-message-icon ion-icon{
+    color: rgb(52, 150, 255);
+}
+
+.reply-back-icon ion-icon{
+    color: rgb(246, 153, 39);
+    margin: 0 20px;
+}
+
+.delete-message-icon ion-icon{
+    color: rgb(193, 30, 30);
+}
+
+.verify-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+.status-conts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    border-radius: 12px;
+    background-color: #f4ce74;
+    font-size: 14px;
+}
+
+.status-conts ion-icon{
+    margin-left: 5px;
+}
+
+.actions ion-icon{
+    cursor: pointer;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+ 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: var(--poppins);
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+.user-message-swal{
+    height:800px;
+    width: 800px;
+}
+
+.messge-cnts{
+    width: 98%;
+    height: 98%;
+    
+}
+
+.mssge-title{
+    display: flex;
+    color: white;
+    background-color: #242424;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.mssge-from{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #acaaaa;
+    margin: 0px 20px;
+
+}
+
+.mssge-email{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #acaaaa;
+    margin: 0px 20px;
+}
+
+span{
+    margin-left: 10px;
+}
+
+.mssge-inbox{
+    border: 2px solid #acaaaa;
+    display: flex;
+    margin: 0px 20px;
+    margin-top: 20px;
+    text-align: start;
+    padding: 10px;
+    max-height: 150px;
+    min-height: 150px;
+    flex-direction: column;
+}
+
+
+
+.mssge-sec{
+    overflow-y: auto;
+}
+
+.mssg-reply{
+    border: 2px solid #acaaaa;
+    display: flex;
+    margin: 0px 20px;
+    margin-top: 50px;
+    text-align: start;
+    padding: 10px;
+    max-height: 170px;
+    min-height: 170px;
+    flex-direction: column;
+}
+
+.mssg-reply textarea{
+    resize: none;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+
+#replyBttn{
+    border: 2px solid rgb(46, 46, 46);
+    padding: 5px 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: transparent;
+    transition: .5s;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+#replyBttn:hover{
+    background-color: rgb(46, 46, 46);
+    color: white;
+}
+
+.mssge-reqs{
+    display: flex;
+    align-items: center;
+    margin: 0px 20px;
+    color: var(--red);
+    visibility: hidden;
+}

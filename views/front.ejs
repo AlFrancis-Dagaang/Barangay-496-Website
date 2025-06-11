@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay 496</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/CSS/front-stylesheet.css">
+        <link rel="icon" href="/images/loFinal.png">
+    </head>
+    <body>
+        <div class="header">
+            <div class="logo">
+                <a href="/"><img src="/images/loFinal.png" class="logo-image" alt="Picture of Logo" style="cursor: pointer;"></a>
+            </div>
+            <div class="navigation">
+                <a href="/">Home</a>
+                <a href="/about-us">About</a>
+                <a href="/contact-us">Contact</a>
+                <button class="signup-icon" onclick="location.href='/register'">Sign Up</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="welcome-text">
+                <h1>Welcome <br>to Barangay 496</h1>
+                <p class="paragraph">"Sama-sama tulong-tulong <br> tungo sa mapayapang Barangay"</p>
+                <button onclick="location.href='/learn-more'">Learn more</button>
+            </div>
+            <div class="sign-wrapper">
+                <div class="form-box log-in">
+                    <h2>Log in</h2>
+                    <form action="#">
+                        <div class="input-box">
+                            <input type="email" required placeholder="Email" class="email">
+                            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" id="password" required placeholder="Password" class="password">
+                            <span class="icon eyeButton"><ion-icon name="eye-off-outline" class="icon-eye"></ion-icon></span>
+                            <p class="message-password"></p>
+                        </div>
+                        <div class="forget-password">
+                            <a href="/forgot-password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="submit-button">Log in</button>
+                        <div class="dont-have-accout">
+                            <p>Don't have an account? <a href="/register">Sign Up</a></p>
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            const password = document.getElementById('password');
+
+            const eyeButton = document.querySelector('.eyeButton');
+                // Add click event listener to each eye button
+
+                eyeButton.addEventListener('click', () => {
+                    // Toggle password visibility
+                    if (password.type === 'password') {
+                        password.type = 'text';
+                        eyeButton.innerHTML = '<ion-icon name="eye-outline" class="icon-eye"></ion-icon>';
+                    } else {
+                        password.type = 'password';
+                        eyeButton.innerHTML = '<ion-icon name="eye-off-outline" class="icon-eye"></ion-icon>';
+                    }
+                });
+        </script>
+        
+        <script src="/JS/password-front.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>
