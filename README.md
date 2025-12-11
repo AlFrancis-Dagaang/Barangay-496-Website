@@ -11,11 +11,8 @@ The platform modernizes the interaction between residents and barangay offices b
 It includes dedicated portals for **Residents**, **Barangay Staff**, and **Barangay Officials**, each with appropriate role-based permissions.
 
 ---
-
-## 🖼️ Screenshots
-
 ### 🏠 Main Website Interface
-![Main Website Screenshot](PUT-YOUR-FRONTEND-IMAGE-LINK-HERE)
+![Main Website Screenshot](https://github.com/AlFrancis-Dagaang/Barangay-496-Website/blob/main/brgy-front.png)
 
 ### ✔ Verification Page
 ![Verification Screenshot](PUT-YOUR-VERIFICATION-IMAGE-LINK-HERE)
