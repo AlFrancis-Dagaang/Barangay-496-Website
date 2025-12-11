@@ -17,8 +17,6 @@ It includes dedicated portals for **Residents**, **Barangay Staff**, and **Baran
 ### Verification Page
 ![Verification Screenshot](https://github.com/AlFrancis-Dagaang/Barangay-496-Website/blob/main/brgy-ver.png)
 
-*(Replace the links above with the actual image URLs or GitHub repo image paths)*
-
 ---
 
 ## 🛠️ Features
