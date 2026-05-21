@@ -61,46 +61,30 @@ The platform modernizes the interaction between residents and barangay offices b
 
 ```
 Barangay-496-Website/
-├── Public/                           # Static assets (CSS, JS, images)
+├── config/                           # Configuration files
+│   └── database.js                   # Database connection
 ├── model/                            # MongoDB models
+├── routes/                           # Route handlers
+│   ├── adminRoutes.js                # Admin route handlers
+│   ├── frontRoutes.js                # Frontend route handlers
+│   ├── user-page-routes.js           # User page routes
+│   ├── appointment-handling-routes.js # Appointment routes
+│   ├── status-page-routes.js         # Status page routes
+│   └── testingEmailRoutes.js         # Email testing routes
+├── scripts/                          # Utility scripts
+│   └── admin-creation.js             # Admin account setup script
+├── utils/                            # Helper utilities
+│   └── sendMailer.js                 # Email/mailer service
 ├── views/                            # HTML/template views
+├── Public/                           # Static assets (CSS, JS, images)
 ├── app.js                            # Express app entry point
-├── index.html                        # Main HTML entry
-├── database.js                       # Database connection
-├── adminRoutes.js                    # Admin route handlers
-├── frontRoutes.js                    # Frontend route handlers
-├── user-page-routes.js               # User page routes
-├── appointment-handling-routes.js    # Appointment routes
-├── status-page-routes.js             # Status page routes
-├── testingEmailRoutes.js             # Email testing routes
-├── sendMailer.js                     # Email/mailer service
-├── admin-creation.js                 # Admin account setup script
-├── existing-data-base-creation.js    # Database seeding script
-├── Barangay-Certificate.pdf          # Sample certificate template
 ├── package.json                      # Node.js dependencies
-└── .gitignore
-```
-
----
-
-## Installation and Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/AlFrancis-Dagaang/Barangay-496-Website.git
-
-# Navigate to project folder
-cd Barangay-496-Website
-
-# Install dependencies
-npm install
-
-# Start the server
-npm start
+├── .gitignore
+└── README.md
 ```
 
 ---
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is private and intended for internal use by Barangay 496 only. Unauthorized access, distribution, or reproduction is not permitted.
