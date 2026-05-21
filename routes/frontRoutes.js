@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const GmailOTP = require('./model/gmailAndOtp');
-const UserMain = require('./model/userMainModel');
-const FullUserInfo =  require('./model/userFullInformationModel');
-const AdminMain = require('./model/adminMainModel');
-const WaitListerAccount = require('./model/waitListerAccountModel');
+const GmailOTP = require('../model/gmailAndOtp');
+const UserMain = require('../model/userMainModel');
+const FullUserInfo =  require('../model/userFullInformationModel');
+const AdminMain = require('../model/adminMainModel');
+const WaitListerAccount = require('../model/waitListerAccountModel');
 const { sendEmail } = require('./sendMailer');
 
 

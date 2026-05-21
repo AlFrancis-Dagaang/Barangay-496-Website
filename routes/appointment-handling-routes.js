@@ -1,5 +1,5 @@
-const UserServiceData = require('./model/userServiceModel');
-const UserAppointment = require('./model/userAppointmentModel');
+const UserServiceData = require('../model/userServiceModel');
+const UserAppointment = require('../model/userAppointmentModel');
 const express = require('express');
 const router = express.Router();
 

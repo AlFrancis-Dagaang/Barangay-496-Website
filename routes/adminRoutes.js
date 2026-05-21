@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Verification = require('./model/verificationFormModel');
-const ExistingUserData = require("./model/pre-exisingDataResidentModel");
-const UserMain = require('./model/userMainModel');
-const FullUserInfo =  require('./model/userFullInformationModel');
-const UserServiceData = require('./model/userServiceModel');
+const Verification = require('../model/verificationFormModel');
+const ExistingUserData = require("../model/pre-exisingDataResidentModel");
+const UserMain = require('../model/userMainModel');
+const FullUserInfo =  require('../model/userFullInformationModel');
+const UserServiceData = require('../model/userServiceModel');
 const { sendEmail } = require('./sendMailer');
 const crypto = require("crypto");
-const UserAppointment = require('./model/userAppointmentModel');
-const UserComplaints = require('./model/userComplaintModel');
-const UserMessages = require('./model/userMessagesModel');
+const UserAppointment = require('../model/userAppointmentModel');
+const UserComplaints = require('../model/userComplaintModel');
+const UserMessages = require('../model/userMessagesModel');
 
 
 router.get('/admin-page', async (req, res) => {

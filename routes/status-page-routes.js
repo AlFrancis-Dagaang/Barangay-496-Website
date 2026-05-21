@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const UserMain = require('./model/userMainModel');
-const UserServiceData = require('./model/userServiceModel');
-const UserAppointment = require('./model/userAppointmentModel');
-const UserComplaints = require('./model/userComplaintModel');
+const UserMain = require('../model/userMainModel');
+const UserServiceData = require('../model/userServiceModel');
+const UserAppointment = require('../model/userAppointmentModel');
+const UserComplaints = require('../model/userComplaintModel');
 
 router.get('/status-hub', async (req, res) => {
     try {

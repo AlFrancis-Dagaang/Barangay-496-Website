@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const UserMain = require('./model/userMainModel');
-const Verification = require('./model/verificationFormModel');
-const UserServiceData = require('./model/userServiceModel');
-const UserAppointment = require('./model/userAppointmentModel');
-const UserComplaints = require('./model/userComplaintModel');
-const UserMessages = require('./model/userMessagesModel');
-const FullUserInfo =  require('./model/userFullInformationModel');
+const UserMain = require('../model/userMainModel');
+const Verification = require('../model/verificationFormModel');
+const UserServiceData = require('../model/userServiceModel');
+const UserAppointment = require('../model/userAppointmentModel');
+const UserComplaints = require('../model/userComplaintModel');
+const UserMessages = require('../model/userMessagesModel');
+const FullUserInfo =  require('../model/userFullInformationModel');
 const { sendEmail } = require('./sendMailer');
 
 // Route to fetch user profile data
