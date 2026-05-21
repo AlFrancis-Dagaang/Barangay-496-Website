@@ -12,11 +12,11 @@ The platform modernizes the interaction between residents and barangay offices b
 
 ### Main Website Interface
 
-![Main Website](https://raw.githubusercontent.com/AlFrancis-Dagaang/Barangay-496-Website/main/brgy-front.png)
+![Main Website](https://raw.githubusercontent.com/AlFrancis-Dagaang/Barangay-496-Website/main/Public/images/brgy-front.png)
 
 ### Verification Page
 
-![Verification Page](https://raw.githubusercontent.com/AlFrancis-Dagaang/Barangay-496-Website/main/brgy-ver.png)
+![Verification Page](https://raw.githubusercontent.com/AlFrancis-Dagaang/Barangay-496-Website/main/Public/images/brgy-ver.png)
 
 ---
 
